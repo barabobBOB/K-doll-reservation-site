@@ -1,18 +1,16 @@
-package com.rena.ticket.domain.user.entity;
+package com.rena.ticket.member.domain;
 
 import com.rena.ticket.global.util.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@Table(name = "users")
+@Table(name = "member")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User extends BaseEntity {
+public class Member extends BaseEntity {
 
     @Column(length = 255, nullable = false)
     private String name;
@@ -29,7 +27,16 @@ public class User extends BaseEntity {
     @Column(length = 255, nullable = false)
     private String phoneNumber;
 
-    public User(String name, String email, String password) {
+    @Enumerated(EnumType.STRING)
+    @Column(length = 255, nullable = false)
+    private Access access;
+
+    public enum Access {
+        ACCESS_TYPE_NORMAL,
+        ACCESS_TYPE_ADMIN,
+    }
+
+    public Member(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
