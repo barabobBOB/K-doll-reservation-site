@@ -1,6 +1,8 @@
 package com.rena.ticket.member.presentation;
 
 import com.rena.ticket.member.dto.request.MemberCreateRequest;
+import com.rena.ticket.member.dto.request.MemberLoginRequest;
+import com.rena.ticket.member.dto.response.MemberLoginResponse;
 import com.rena.ticket.member.service.MemberService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +26,14 @@ public class MemberController {
     ) {
         memberService.createMember(memberCreateRequest);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<MemberLoginResponse> login(
+            @RequestBody MemberLoginRequest memberCreateRequest
+            ) {
+        return ResponseEntity.ok(
+                memberService.findIdByEmailAndPassword(memberCreateRequest.getEmail(), memberCreateRequest.getPassword())
+        );
     }
 }
