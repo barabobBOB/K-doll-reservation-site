@@ -5,6 +5,7 @@ import com.rena.ticket.member.dto.request.MemberLoginRequest;
 import com.rena.ticket.member.dto.response.MemberLoginResponse;
 import com.rena.ticket.member.service.MemberService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +22,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/register")
-    public ResponseEntity<Void> createMember(
-            @RequestBody MemberCreateRequest memberCreateRequest
+    public ResponseEntity<Void> registerMember(
+            @RequestBody @Valid MemberCreateRequest memberCreateRequest
     ) {
         memberService.createMember(memberCreateRequest);
         return ResponseEntity.ok().build();
@@ -30,7 +31,7 @@ public class MemberController {
 
     @PostMapping("/login")
     public ResponseEntity<MemberLoginResponse> login(
-            @RequestBody MemberLoginRequest memberCreateRequest
+            @RequestBody @Valid MemberLoginRequest memberCreateRequest
             ) {
         return ResponseEntity.ok(
                 memberService.findIdByEmailAndPassword(memberCreateRequest.getEmail(), memberCreateRequest.getPassword())

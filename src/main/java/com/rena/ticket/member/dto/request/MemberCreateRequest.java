@@ -2,10 +2,7 @@ package com.rena.ticket.member.dto.request;
 
 import com.rena.ticket.member.domain.Member;
 import com.rena.ticket.member.domain.type.MemberAccessType;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +30,7 @@ public class MemberCreateRequest {
     @Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "유효한 전화번호를 입력해주세요. 예: 010-1234-5678")
     private String phoneNumber;
 
-    @NotBlank(message = "접근 권한을 입력해주세요.")
+    @NotNull(message = "접근 권한을 입력해주세요.")
     private MemberAccessType accessType;
 
 }
