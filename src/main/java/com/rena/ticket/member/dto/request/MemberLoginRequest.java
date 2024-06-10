@@ -3,9 +3,11 @@ package com.rena.ticket.member.dto.request;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class MemberLoginRequest {
 
     @NotBlank(message = "이메일을 입력해주세요.")
