@@ -16,16 +16,10 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @Getter
-@SuperBuilder
 @MappedSuperclass
-@Where(clause = "deleted_at is null")
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class BaseEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @CreatedDate
     @Column(updatable = false, name = "created_at")
