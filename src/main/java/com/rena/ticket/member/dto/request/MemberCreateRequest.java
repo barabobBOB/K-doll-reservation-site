@@ -1,6 +1,7 @@
 package com.rena.ticket.member.dto.request;
 
 import com.rena.ticket.member.domain.Member;
+import com.rena.ticket.member.domain.type.MemberAccessType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -31,6 +32,6 @@ public class MemberCreateRequest {
     private String phoneNumber;
 
     @NotBlank(message = "접근 권한을 입력해주세요.")
-    private Member.AccessType accessType;
+    private MemberAccessType accessType;
 
 }

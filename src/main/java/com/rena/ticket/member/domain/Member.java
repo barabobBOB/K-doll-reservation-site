@@ -1,6 +1,7 @@
 package com.rena.ticket.member.domain;
 
 import com.rena.ticket.global.util.BaseEntity;
+import com.rena.ticket.member.domain.type.MemberAccessType;
 import com.rena.ticket.member.dto.request.MemberCreateRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -36,14 +37,9 @@ public class Member extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 255, nullable = false)
-    private AccessType accessType;
+    private MemberAccessType accessType;
 
-    public enum AccessType {
-        ACCESS_TYPE_NORMAL,
-        ACCESS_TYPE_ADMIN,
-    }
-
-    public Member(String name, String email, String password, String fullname, String phoneNumber, AccessType accessType) {
+    public Member(String name, String email, String password, String fullname, String phoneNumber, MemberAccessType accessType) {
         this.name = name;
         this.email = email;
         this.password = password;
